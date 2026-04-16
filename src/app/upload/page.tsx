@@ -1,3 +1,4 @@
+import { UploadForm } from "@/components/upload-form";
 import { SiteHeader } from "@/components/site-header";
 import { getBoards } from "@/lib/content";
 import { hasSupabaseEnv } from "@/lib/supabase";
@@ -18,49 +19,14 @@ export default async function UploadPage() {
             Add your own photos here next.
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
-            The form is laid out like your real creator flow. Once your Supabase
-            keys are added, we can connect storage and save uploads for real.
+            This now saves real photos to Supabase Storage and inserts the pin
+            into your database, as long as your bucket and SQL setup are ready.
           </p>
 
-          <form className="mt-8 space-y-4">
-            <div className="rounded-[1.6rem] border border-dashed border-[#dfcbbb] bg-[#fff8f1] p-8 text-center">
-              <p className="text-sm font-semibold text-ink">
-                Drag a photo here later
-              </p>
-              <p className="mt-2 text-sm leading-6 text-muted">
-                For now this is a placeholder dropzone for your future upload component.
-              </p>
-            </div>
-
-            <input
-              type="text"
-              placeholder="Title"
-              className="w-full rounded-[1.2rem] border border-[#eadfd2] bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted focus:border-[#cf9d80]"
-            />
-            <textarea
-              placeholder="Caption"
-              rows={5}
-              className="w-full rounded-[1.2rem] border border-[#eadfd2] bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted focus:border-[#cf9d80]"
-            />
-            <input
-              type="text"
-              placeholder="Tags separated by commas"
-              className="w-full rounded-[1.2rem] border border-[#eadfd2] bg-white px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted focus:border-[#cf9d80]"
-            />
-            <select className="w-full rounded-[1.2rem] border border-[#eadfd2] bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-[#cf9d80]">
-              <option>Select a board</option>
-              {boards.map((board) => (
-                <option key={board.id}>{board.name}</option>
-              ))}
-            </select>
-
-            <button
-              type="button"
-              className="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#4c342a]"
-            >
-              Save pin
-            </button>
-          </form>
+          <UploadForm
+            boards={boards.map((board) => ({ id: board.id, name: board.name }))}
+            supabaseReady={hasSupabaseEnv}
+          />
         </div>
 
         <aside className="rounded-[2rem] border border-[#f0dfd2] bg-[#fffdf9] p-6 shadow-[0_25px_80px_rgba(160,112,79,0.1)]">
@@ -74,8 +40,8 @@ export default async function UploadPage() {
                 : "No keys yet. Add them to .env.local next."}
             </p>
             <p className="mt-2 text-sm leading-6 text-muted">
-              Create the tables from `supabase/schema.sql`, then create the
-              storage bucket and we can wire the save action next.
+              Create the tables and policies from `supabase/schema.sql`. After
+              that, uploads from this page can go live.
             </p>
           </div>
 

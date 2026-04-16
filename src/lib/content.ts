@@ -1,4 +1,5 @@
 import { boards as mockBoards, pins as mockPins, type Board, type Pin } from "@/data/mock-data";
+import { unstable_noStore as noStore } from "next/cache";
 import { hasSupabaseEnv, supabase } from "@/lib/supabase";
 
 type SupabaseBoardRow = {
@@ -76,6 +77,8 @@ function mapPin(row: SupabasePinRow, index: number): Pin {
 }
 
 export async function getPins(): Promise<Pin[]> {
+  noStore();
+
   if (!hasSupabaseEnv || !supabase) {
     return mockPins;
   }
@@ -93,6 +96,8 @@ export async function getPins(): Promise<Pin[]> {
 }
 
 export async function getBoards(): Promise<Board[]> {
+  noStore();
+
   if (!hasSupabaseEnv || !supabase) {
     return mockBoards;
   }
@@ -126,6 +131,8 @@ export async function getPinsByBoard(id: string) {
 }
 
 export async function searchAllPins(query: string) {
+  noStore();
+
   const pins = await getPins();
   const normalizedQuery = query.trim().toLowerCase();
 
