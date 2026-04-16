@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fffaf2;
-  --foreground: #261914;
-  --paper: #fffef9;
-  --muted: #79685d;
-  --rose: #f2d6c9;
-  --peach: #f3ba96;
-  --butter: #f7e7a5;
-  --sage: #c8d5bf;
-  --clay: #cc8b65;
-  --ink: #36231c;
+  --background: #f6f3ef;
+  --foreground: #201813;
+  --paper: #fffdfb;
+  --muted: #6f6258;
+  --rose: #f4d9cb;
+  --peach: #f1b590;
+  --butter: #f3e2a4;
+  --sage: #ccd8c5;
+  --clay: #d8895e;
+  --ink: #2d211d;
 }
 
 @theme inline {
@@ -41,9 +41,9 @@ body {
   color: var(--foreground);
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   background-image:
-    radial-gradient(circle at top left, rgba(243, 186, 150, 0.22), transparent 28%),
-    radial-gradient(circle at top right, rgba(200, 213, 191, 0.3), transparent 26%),
-    linear-gradient(180deg, #fffef9 0%, #fff8ef 100%);
+    radial-gradient(circle at top left, rgba(243, 186, 150, 0.18), transparent 25%),
+    radial-gradient(circle at top right, rgba(200, 213, 191, 0.16), transparent 24%),
+    linear-gradient(180deg, #faf7f4 0%, #f2efeb 100%);
 }
 
 a {
@@ -56,13 +56,13 @@ a {
 }
 
 .masonry-grid {
-  column-gap: 1.25rem;
+  column-gap: 1rem;
   column-count: 1;
 }
 
 .masonry-item {
   break-inside: avoid;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
