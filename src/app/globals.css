@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffaf2;
+  --foreground: #261914;
+  --paper: #fffef9;
+  --muted: #79685d;
+  --rose: #f2d6c9;
+  --peach: #f3ba96;
+  --butter: #f7e7a5;
+  --sage: #c8d5bf;
+  --clay: #cc8b65;
+  --ink: #36231c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
+  --color-muted: var(--muted);
+  --color-rose: var(--rose);
+  --color-peach: var(--peach);
+  --color-butter: var(--butter);
+  --color-sage: var(--sage);
+  --color-clay: var(--clay);
+  --color-ink: var(--ink);
+  --font-sans: "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  background-image:
+    radial-gradient(circle at top left, rgba(243, 186, 150, 0.22), transparent 28%),
+    radial-gradient(circle at top right, rgba(200, 213, 191, 0.3), transparent 26%),
+    linear-gradient(180deg, #fffef9 0%, #fff8ef 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(204, 139, 101, 0.25);
+}
+
+.masonry-grid {
+  column-gap: 1.25rem;
+  column-count: 1;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1100px) {
+  .masonry-grid {
+    column-count: 3;
+  }
+}
