@@ -130,6 +130,11 @@ export async function getPinsByBoard(id: string) {
   return pins.filter((pin) => pin.board === id);
 }
 
+export async function getPinById(id: string) {
+  const pins = await getPins();
+  return pins.find((pin) => String(pin.id) === id) ?? null;
+}
+
 export async function searchAllPins(query: string) {
   noStore();
 
