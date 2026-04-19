@@ -39,7 +39,7 @@ export default async function PinDetailPage({
           </Link>
 
           <div className="mt-5 grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_420px]">
-            <PinCard pin={pin} />
+            <PinCard pin={pin} clickable={false} />
 
             <div className="rounded-[1.8rem] bg-[#faf6f1] p-6">
               <p className="text-xs uppercase tracking-[0.24em] text-muted">
