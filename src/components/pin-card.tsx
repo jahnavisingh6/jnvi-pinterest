@@ -11,16 +11,8 @@ export function PinCard({
   pin: Pin;
   clickable?: boolean;
 }) {
-  return (
-    <article className="group masonry-item relative overflow-hidden rounded-[1.7rem] bg-white shadow-[0_12px_28px_rgba(0,0,0,0.08)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.12)]">
-      {clickable ? (
-        <Link
-          href={`/pins/${pin.id}`}
-          aria-label={`Open ${pin.title}`}
-          className="absolute inset-0 z-10 block cursor-pointer rounded-[1.7rem]"
-        />
-      ) : null}
-
+  const content = (
+    <>
       {pin.imageUrl ? (
         <div className="bg-[linear-gradient(180deg,#fcf8f4_0%,#f3eee8_100%)] p-3 sm:p-4">
           <div className="overflow-hidden rounded-[1.35rem] border border-[#efe5db] bg-white">
@@ -42,7 +34,7 @@ export function PinCard({
             <span className="rounded-full bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5d4c44] backdrop-blur">
               Mood pin
             </span>
-            <span className="rounded-full bg-[#e60023] px-4 py-2 text-sm font-semibold text-white shadow-lg">
+            <span className="rounded-full bg-[#dd6f57] px-4 py-2 text-sm font-semibold text-white shadow-lg">
               Save
             </span>
           </div>
@@ -83,6 +75,19 @@ export function PinCard({
           ))}
         </div>
       </div>
-    </article>
+    </>
   );
+
+  const cardClassName =
+    "group masonry-item block overflow-hidden rounded-[1.7rem] bg-white shadow-[0_12px_28px_rgba(0,0,0,0.08)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.12)]";
+
+  if (clickable) {
+    return (
+      <Link href={`/pins/${pin.id}`} className={cardClassName}>
+        {content}
+      </Link>
+    );
+  }
+
+  return <article className={cardClassName}>{content}</article>;
 }
