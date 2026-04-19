@@ -182,9 +182,10 @@ export default async function Home() {
                   href={index === 0 ? "/" : `/search?q=${encodeURIComponent(filter)}`}
                   className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition ${
                     index === 0
-                      ? "bg-[#ead2c5] text-ink"
+                      ? "text-ink"
                       : "bg-[#f5f2ef] text-ink hover:bg-[#ece7e2]"
                   }`}
+                  style={index === 0 ? { backgroundColor: "#ead2c5" } : undefined}
                 >
                   {filter}
                 </Link>

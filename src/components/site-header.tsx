@@ -36,7 +36,8 @@ export function SiteHeader() {
         <div className="hidden items-center gap-2 lg:flex">
           <Link
             href="/"
-            className="rounded-full bg-[#ead2c5] px-4 py-3 text-sm font-semibold text-ink"
+            className="rounded-full px-4 py-3 text-sm font-semibold text-ink"
+            style={{ backgroundColor: "#ead2c5" }}
           >
             Home
           </Link>
@@ -85,9 +86,10 @@ export function SiteHeader() {
             href={index === 0 ? "/" : `/search?q=${encodeURIComponent(label)}`}
             className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition ${
               index === 0
-                ? "bg-[#ead2c5] text-ink"
+                ? "text-ink"
                 : "bg-[#f4efe9] text-ink hover:bg-[#ece3d9]"
             }`}
+            style={index === 0 ? { backgroundColor: "#ead2c5" } : undefined}
           >
             {label}
           </Link>
